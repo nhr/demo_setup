@@ -1,0 +1,14 @@
+Host demo_master
+  User vagrant
+  HostName 10.245.1.2
+  IdentityFile ~/.ssh/vagrant
+
+Host demo_minion-1
+  User vagrant
+  HostName 10.245.2.2
+  IdentityFile ~/.ssh/vagrant
+
+Host demo_minion-2
+  User vagrant
+  HostName 10.245.2.3
+  IdentityFile ~/.ssh/vagrant
