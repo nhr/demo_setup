@@ -45,7 +45,7 @@ sed -i '8s|.*|        "sourceURI": "http://10.245.1.2/ruby-hello-world.git",|' /
 
 # Start demo components
 openshift kube apply -c /home/vagrant/sample-app/docker-registry-config.json
-openshift kube create buildConfigs -c /home/vagrant/sample-app/buildcfg/application-buildconfig.json
+openshift kube create buildConfigs -c /home/vagrant/sample-app/application-buildconfig.json
 
 # Define a bash function for triggering builds
 if [ -f /home/vagrant/.bashrc ]; then
@@ -53,7 +53,7 @@ if [ -f /home/vagrant/.bashrc ]; then
   if [ $? -ne 0 ]; then
     echo "" >> /home/vagrant/.bashrc
     echo "function simulate_webhook {" >> /home/vagrant/.bashrc
-    echo "  curl -s -A \"GitHub-Hookshot/github\" -H \"Content-Type:application/json\" -H \"X-Github-Event:push\" -d @/home/vagrant/sample-app/buildinvoke/pushevent.json http://localhost:8080/osapi/v1beta1/buildConfigHooks/build100/secret101/github" >> /home/vagrant/.bashrc
+    echo "  curl -s -A \"GitHub-Hookshot/github\" -H \"Content-Type:application/json\" -H \"X-Github-Event:push\" -d @/home/vagrant/sample-app/github-webhook-example.json http://localhost:8080/osapi/v1beta1/buildConfigHooks/build100/secret101/github"
     echo "}" >> /home/vagrant/.bashrc
   fi
 fi
