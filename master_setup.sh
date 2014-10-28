@@ -53,7 +53,7 @@ if [ -f /home/vagrant/.bashrc ]; then
   if [ $? -ne 0 ]; then
     echo "" >> /home/vagrant/.bashrc
     echo "function simulate_webhook {" >> /home/vagrant/.bashrc
-    echo "  curl -s -A \"GitHub-Hookshot/github\" -H \"Content-Type:application/json\" -H \"X-Github-Event:push\" -d @/home/vagrant/sample-app/github-webhook-example.json http://localhost:8080/osapi/v1beta1/buildConfigHooks/build100/secret101/github"
+    echo "  curl -s -A \"GitHub-Hookshot/github\" -H \"Content-Type:application/json\" -H \"X-Github-Event:push\" -d @/home/vagrant/sample-app/github-webhook-example.json http://localhost:8080/osapi/v1beta1/buildConfigHooks/build100/secret101/github" >> /home/vagrant/.bashrc
     echo "}" >> /home/vagrant/.bashrc
   fi
 fi
