@@ -38,14 +38,14 @@ git push
 popd
 
 # Modify the buildCfg
-sed -i '8s|.*|        "sourceURI": "http://10.245.1.2/ruby-hello-world.git",|' /home/vagrant/sample-app/buildcfg/buildcfg.json
+sed -i '8s|.*|        "sourceURI": "http://10.245.1.2/ruby-hello-world.git",|' /home/vagrant/sample-app/application-buildconfig.json
 
 # Update Docker images
 /home/vagrant/sample-app/pullimages.sh
 
 # Start demo components
-openshift kube apply -c /home/vagrant/sample-app/registry-config.json
-openshift kube create buildConfigs -c /home/vagrant/sample-app/buildcfg/buildcfg.json
+openshift kube apply -c /home/vagrant/sample-app/docker-registry-config.json
+openshift kube create buildConfigs -c /home/vagrant/sample-app/buildcfg/application-buildconfig.json
 
 # Define a bash function for triggering builds
 if [ -f /home/vagrant/.bashrc ]; then
